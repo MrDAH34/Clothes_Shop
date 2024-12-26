@@ -1,6 +1,6 @@
 package com.project.clothes_ecommerce.DTO.Response;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.project.clothes_ecommerce.Entity.Country;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -14,11 +14,10 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class APIResponse<T> {
-    @Builder.Default
-    int code = 200;
-    @Builder.Default
-    String message = "Success";
-    T data;
+public class AddressResponse {
+    String houseNumber;
+    String streetName;
+    String city;
+    Country country;
+    String zipCode;
 }

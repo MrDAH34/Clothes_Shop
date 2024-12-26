@@ -15,6 +15,7 @@ public enum ErrorCode {
     WRONG_ERROR_CODE(500, "Your request has an invalid error code", HttpStatus.INTERNAL_SERVER_ERROR),
     INVALID_PASSWORD_LENGTH(400, "Your password must be at least 8 characters", HttpStatus.BAD_REQUEST),
     USER_EXISTS(400, "User already exists", HttpStatus.BAD_REQUEST),
+    ADDRESS_NOT_FOUND(404, "Address not found", HttpStatus.NOT_FOUND),
     USER_NOT_FOUND(404, "User not found", HttpStatus.NOT_FOUND);
 
     int code;
