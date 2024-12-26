@@ -17,8 +17,11 @@ import com.project.clothes_ecommerce.DTO.Request.UserCreateRequest;
 import com.project.clothes_ecommerce.DTO.Request.UserUpdateRequest;
 import com.project.clothes_ecommerce.DTO.Response.APIResponse;
 import com.project.clothes_ecommerce.DTO.Response.AddressResponse;
+import com.project.clothes_ecommerce.DTO.Response.ProductDetailResponse;
+import com.project.clothes_ecommerce.DTO.Response.ProductResponse;
 import com.project.clothes_ecommerce.DTO.Response.UserResponse;
 import com.project.clothes_ecommerce.Service.AddressService;
+import com.project.clothes_ecommerce.Service.ProductService;
 import com.project.clothes_ecommerce.Service.UserService;
 
 import jakarta.validation.Valid;
@@ -34,6 +37,7 @@ public class UserController {
 
     UserService userService;
     AddressService addressService;
+    ProductService productService;
 
     // User Management
     @GetMapping
@@ -98,6 +102,21 @@ public class UserController {
     public APIResponse<AddressResponse> deleteAddress(@PathVariable Long id) {
         APIResponse<AddressResponse> response = new APIResponse<>();
         addressService.deleteAddress(id);
+        return response;
+    }
+
+    // Product Management
+    @GetMapping("/products")
+    public APIResponse<List<ProductResponse>> getAllProduct() {
+        APIResponse<List<ProductResponse>> response = new APIResponse<>();
+        response.setData(productService.getAllProducts());
+        return response;
+    }
+
+    @GetMapping("/products/{id}")
+    public APIResponse<ProductDetailResponse> getProductDetail(@PathVariable Long id) {
+        APIResponse<ProductDetailResponse> response = new APIResponse<>();
+        response.setData(productService.getProductDetail(id));
         return response;
     }
 }
