@@ -7,5 +7,5 @@ import com.project.clothes_ecommerce.Entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String>{
-
+    boolean existsByEmail(String email);
 }

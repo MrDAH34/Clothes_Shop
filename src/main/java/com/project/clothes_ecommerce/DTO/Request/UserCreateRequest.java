@@ -1,5 +1,8 @@
 package com.project.clothes_ecommerce.DTO.Request;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,9 +16,13 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserCreateRequest {
+    @NotNull(message = "NULL_INPUT")
     String firstName;
     String lastName;
+    @Email(message = "INVALID_EMAIL")
+    @NotNull(message = "NULL_INPUT")
     String email;
     String phone;
+    @Size(min = 8, message = "INVALID_PASSWORD_LENGTH")
     String password;
 }

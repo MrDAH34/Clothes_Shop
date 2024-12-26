@@ -18,6 +18,8 @@ import com.project.clothes_ecommerce.DTO.Response.APIResponse;
 import com.project.clothes_ecommerce.DTO.Response.UserResponse;
 import com.project.clothes_ecommerce.Service.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/users")
 public class UserController {
@@ -43,7 +45,7 @@ public class UserController {
     }
 
     @PostMapping
-    APIResponse<UserResponse> saveUser(@RequestBody UserCreateRequest request) {
+    APIResponse<UserResponse> saveUser(@RequestBody @Valid UserCreateRequest request) {
         APIResponse<UserResponse> response = new APIResponse<>();
         response.setCode(200);
         response.setMessage("Success");
